@@ -1,11 +1,12 @@
 # openfire启动流程（ServerStarter类、XMPPServer类）
 ## 首先从org.jivesoftware.openfire.starter包下的ServerStarter.java文件中启动：
-**流程图**：
+
+**流程图**：  
+
 ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BServerStart%E7%B1%BB.png)
 
    -  final ClassLoader parent = findParentClassLoader();装载启动类加载器（bootstrap contaioner）：
-      - 原因：首先程序中的.java文件经过编译成功后生成.class文件，我们需要使用类加载将.class文件加载到JVM虚拟机中，这样程序就可以正常运行了。如果不使用类加载的话，程序也可以正常运行，但是JVM启动的时候不会一次性加载所有.class文件，而是根据程序运行的需要动态的加载基础类，其他类则等到需要的时候再加载，虽然节省了内存的开销，但是可能引起耗时等等。  
-      
+      - 原因：首先程序中的.java文件经过编译成功后生成.class文件，我们需要使用类加载将.class文件加载到JVM虚拟机中，这样程序就可以正常运行了。如果不使用类加载的话，程序也可以正常运行，但是JVM启动的时候不会一次性加载所有.class文件，而是根据程序运行的需要动态的加载基础类，其他类则等到需要的时候再加载，虽然节省了内存的开销，但是可能引起耗时等等。 
      - 扩展：Bootstrap Loader是使用C++语言编写的，在java中不存在实体；该启动类加载器主要加载JVM自身工作需要的基本类，如java.lang.\*、java.util.\*等等；ExtClassLoader加载位于$JAVA_HOME/jre/ib/ext目录下的扩展jar；AppClassLoader是ExtClassLoader子类，也是程序中的默认加载器，加载$CLASSPATH下的目录和jar。ClassLoader使用了双亲委托模式进行加载。
        - 扩展：**双亲委托模式**。
         1、首先，当前类加载器从自己已经加载的类中查询此类是否已经加载，如果已经加载则直接返回已经加载的类。
@@ -29,8 +30,10 @@
 - **简介**：  
 XMPPServer类将加载、初始化和启动所有服务器的主XMPP server模块。在JVM中，服务器是唯一的，本类中可以通过使用getInstance()方法获取单例XMPPServer。加载的模块将被初始化，并且可以通过服务器访问其他模块。这意味着一个模块定义另外一个模块的唯一方法是通过服务器。这个服务器也维护已加载模块的列表。在启动所有模块后，服务器将加载任何可用的插件。服务器的配置文件在Openfire/distribution/src/conf路径下的openfire.xml文件。  
 
-- **启动流程**：
-流程图：
+- **启动流程**：  
+
+流程图：  
+
  ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BXMPPServer%E7%B1%BB%2Bstart\(\).png)
 本类的构造方法中调用start()函数，**服务器从start()函数启动**。
 1、首先调用initalize()方法初始化服务器；
@@ -72,9 +75,12 @@ XMPPServer类将加载、初始化和启动所有服务器的主XMPP server模�
    
     2、静态代码块：存储一些属性properties，使用List集合存储，如：管理控制台网络设置（管理控制台端口、管理控制台安全端口、管理控制台接口、网络接口）、移动信息服务中心设置（区域、全限定域名fqdn、安装程序、群集管理器属性名称、数据库连接驱动URL、数据库用户名、数据库密码、数据库连接测试、数据库连接超时或等待、数据库最小连接、数据库最大连接等等）。然后添加属性集。  
     
-    3、部分函数解读：
-    ** initialize()：**
-    流程图：
+    3、部分函数解读：  
+    
+    ** initialize()：**  
+    
+    流程图：  
+    
     ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BXMPPServer%E7%B1%BB%2Binitialize\(\).png)
      1、初始化服务器，调用locateOpenfire()函数定位openfire路径；
      2、setup节点为true时，则表示已经配置完成，将setupMode设置为false；启动应用程序时，需要配置JiveGlobals类，以便可以从配置文件中加载应用程序的初始配置。配置文件保存以XML格式、数据库配置和用户身份验证配置存储的属性；并进入管理员登录界面。
