@@ -34,8 +34,9 @@ XMPPServer类将加载、初始化和启动所有服务器的主XMPP server模�
 
 流程图：  
 
- ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BXMPPServer%E7%B1%BB%2Bstart\(\).png)
-本类的构造方法中调用start()函数，**服务器从start()函数启动**。
+ ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BXMPPServer%E7%B1%BB%2Bstart\(\).png)  
+ 
+ 本类的构造方法中调用start()函数，**服务器从start()函数启动**。
 1、首先调用initalize()方法初始化服务器；
 2、File pluginDir = new File(openfireHome, "plugins");
      pluginManager = new PluginManager(pluginDir);
@@ -81,7 +82,8 @@ XMPPServer类将加载、初始化和启动所有服务器的主XMPP server模�
     
     流程图：  
     
-    ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BXMPPServer%E7%B1%BB%2Binitialize\(\).png)
+    ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BXMPPServer%E7%B1%BB%2Binitialize\(\).png)  
+    
      1、初始化服务器，调用locateOpenfire()函数定位openfire路径；
      2、setup节点为true时，则表示已经配置完成，将setupMode设置为false；启动应用程序时，需要配置JiveGlobals类，以便可以从配置文件中加载应用程序的初始配置。配置文件保存以XML格式、数据库配置和用户身份验证配置存储的属性；并进入管理员登录界面。
      3、如果程序以独立模式运行，打印log日志，在JVM中增加一个关闭的钩子，当JVM关闭的时候，执行系统中已经设置的所有通过方法addShutdownHook添加的钩子，当系统执行完这些钩子后，JVM才会关闭。这些钩子在JVM关闭的时候进行内存清理、对象销毁等操作。也就是说在JVM关闭前执行一个线程，这个线程执行服务器关闭即shutdownServer()方法。
