@@ -7,7 +7,7 @@
 
    -  final ClassLoader parent = findParentClassLoader();装载启动类加载器（bootstrap contaioner）：
       - 原因：首先程序中的.java文件经过编译成功后生成.class文件，我们需要使用类加载将.class文件加载到JVM虚拟机中，这样程序就可以正常运行了。如果不使用类加载的话，程序也可以正常运行，但是JVM启动的时候不会一次性加载所有.class文件，而是根据程序运行的需要动态的加载基础类，其他类则等到需要的时候再加载，虽然节省了内存的开销，但是可能引起耗时等等。 
-     - 扩展：Bootstrap Loader是使用C++语言编写的，在java中不存在实体；该启动类加载器主要加载JVM自身工作需要的基本类，如java.lang.\*、java.util.\*等等；ExtClassLoader加载位于$JAVA_HOME/jre/ib/ext目录下的扩展jar；AppClassLoader是ExtClassLoader子类，也是程序中的默认加载器，加载$CLASSPATH下的目录和jar。ClassLoader使用了双亲委托模式进行加载。
+     - 扩展：Bootstrap Loader是使用C++语言编写的，在java中不存在实体；该启动类加载器主要加载JVM自身工作需要的基本类，如java.lang.\*、java.util.\*等等；ExtClassLoader加载位于$JAVA_HOME/jre/lib/ext目录下的扩展jar；AppClassLoader是ExtClassLoader子类，也是程序中的默认加载器，加载$CLASSPATH下的目录和jar。ClassLoader使用了双亲委托模式进行加载。
        - 扩展：**双亲委托模式**。
         1、首先，当前类加载器从自己已经加载的类中查询此类是否已经加载，如果已经加载则直接返回已经加载的类。
         2、其次，如果当前类加载器没有找到步骤1中的类，则委托父类加载器去加载，父类加载器执行步骤1，查询是否加载，如果成功则返回已加载的类；否则的话，继续委托父类的父类加载器去加载，直到bootstrp ClassLoader。
