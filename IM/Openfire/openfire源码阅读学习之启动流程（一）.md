@@ -36,18 +36,28 @@ XMPPServer类将加载、初始化和启动所有服务器的主XMPP server模�
 
  ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BXMPPServer%E7%B1%BB%2Bstart\(\).png)  
  
- 本类的构造方法中调用start()函数，**服务器从start()函数启动**。
-1、首先调用initalize()方法初始化服务器；
+ 本类的构造方法中调用start()函数，**服务器从start()函数启动**。  
+ 
+1、首先调用initalize()方法初始化服务器；  
+
 2、File pluginDir = new File(openfireHome, "plugins");
      pluginManager = new PluginManager(pluginDir);
-在项目路径下创建一个文件为plugins用于创建一个插件管理器；
-3、如果服务器已经设置好了即setupMode为false(没设置的时候，默认值为true)，则调用verifyDataSource(); 进行数据库验证；loadModules();加载启动模块；initModules();初始化模块；startModules();启动插件模块；
-4、ServerTrafficCounter.initStatistics();初始化启动信息；
-5、pluginManager.start();装载插件并启动插件监控管理；
-6、然后打印日志，并将变量started设置为true，表示已经启动；
-7、唤醒服务器监听器监听，插件初始化和启动完成后会通知监听器；
-8、如果服务器设置成功，则调用scanForSystemPropertyClasses();扫描系统属性类。
+在项目路径下创建一个文件为plugins用于创建一个插件管理器；  
+
+3、如果服务器已经设置好了即setupMode为false(没设置的时候，默认值为true)，则调用verifyDataSource(); 进行数据库验证；loadModules();加载启动模块；initModules();初始化模块；startModules();启动插件模块；  
+
+4、ServerTrafficCounter.initStatistics();初始化启动信息；  
+
+5、pluginManager.start();装载插件并启动插件监控管理；  
+
+6、然后打印日志，并将变量started设置为true，表示已经启动；  
+
+7、唤醒服务器监听器监听，插件初始化和启动完成后会通知监听器；  
+
+8、如果服务器设置成功，则调用scanForSystemPropertyClasses();扫描系统属性类。  
+
 9、在启动过程中，如果出现错误，则打印log日志，并调用shutdownServer()函数关闭服务器。  
+
 
 - **部分解释**：
    1、变量：
@@ -84,14 +94,22 @@ XMPPServer类将加载、初始化和启动所有服务器的主XMPP server模�
     
     ![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/blogs/master/pictures/openfire%2BXMPPServer%E7%B1%BB%2Binitialize\(\).png)  
     
-     1、初始化服务器，调用locateOpenfire()函数定位openfire路径；
-     2、setup节点为true时，则表示已经配置完成，将setupMode设置为false；启动应用程序时，需要配置JiveGlobals类，以便可以从配置文件中加载应用程序的初始配置。配置文件保存以XML格式、数据库配置和用户身份验证配置存储的属性；并进入管理员登录界面。
-     3、如果程序以独立模式运行，打印log日志，在JVM中增加一个关闭的钩子，当JVM关闭的时候，执行系统中已经设置的所有通过方法addShutdownHook添加的钩子，当系统执行完这些钩子后，JVM才会关闭。这些钩子在JVM关闭的时候进行内存清理、对象销毁等操作。也就是说在JVM关闭前执行一个线程，这个线程执行服务器关闭即shutdownServer()方法。
-     4、获取当前线程的类加载器。
-     5、创建缓存对象。
-     6、更新服务器信息。
-     7、如果setupMode和"autosetup.run"均为true，则说明服务器未配置，则进入浏览器打开9090端口进去的界面，未配置的openfire界面。此时调用runAutoSetup()方法进行配置，并保存相关信息；
-     8、将fqdn的存储从数据库移到xml配置文件。
+     1、初始化服务器，调用locateOpenfire()函数定位openfire路径；  
+     
+     2、setup节点为true时，则表示已经配置完成，将setupMode设置为false；启动应用程序时，需要配置JiveGlobals类，以便可以从配置文件中加载应用程序的初始配置。配置文件保存以XML格式、数据库配置和用户身份验证配置存储的属性；并进入管理员登录界面。  
+     
+     3、如果程序以独立模式运行，打印log日志，在JVM中增加一个关闭的钩子，当JVM关闭的时候，执行系统中已经设置的所有通过方法addShutdownHook添加的钩子，当系统执行完这些钩子后，JVM才会关闭。这些钩子在JVM关闭的时候进行内存清理、对象销毁等操作。也就是说在JVM关闭前执行一个线程，这个线程执行服务器关闭即shutdownServer()方法。  
+     
+     4、获取当前线程的类加载器。  
+     
+     5、创建缓存对象。  
+     
+     6、更新服务器信息。  
+     
+     7、如果setupMode和"autosetup.run"均为true，则说明服务器未配置，则进入浏览器打开9090端口进去的界面，未配置的openfire界面。此时调用runAutoSetup()方法进行配置，并保存相关信息；  
+     
+     8、将fqdn的存储从数据库移到xml配置文件。  
+     
 
      getInstance()：获取单例服务器对象；
      
@@ -115,7 +133,7 @@ XMPPServer类将加载、初始化和启动所有服务器的主XMPP server模�
      
      createJID(String username, String resource, boolean skipStringprep)：创建本服务器的本地XMPP地址，新的JID的建设可以通过跳过字符串准备操作来优化；
      
-      getAdmins()：返回包含服务器管理员的JID的集合；
+     getAdmins()：返回包含服务器管理员的JID的集合；
       
      addServerListener(XMPPServerListener listener)：添加XMPP Server监听器；
      
