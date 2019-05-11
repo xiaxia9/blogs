@@ -1,5 +1,5 @@
 - **写在前面：该spark是客户端，是和openfire服务器一起使用的，不是那个spark集群~**。  
-- 对于spark客户端的启动流程和openfire启动流程所涉及的知识没有多大区别，（部分涉及知识请参照 [openfire服务器源码阅读学习之启动流程（一）](https://blog.csdn.net/qq_38172320/article/details/90036025)）只是新加了unpackArchives(File libDir, boolean printStatus)函数；  
+- 对于spark客户端的启动流程和openfire启动流程所涉及的知识没有多大区别，（部分涉及知识请参照 [openfire服务器源码阅读学习之启动流程（一）](https://github.com/Xiawen9/blogs/blob/master/IM/Openfire/openfire%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89.md)）只是新加了unpackArchives(File libDir, boolean printStatus)函数；  
 
 - unpackArchives(File libDir, boolean printStatus)函数解释：将目录中的任何包文件转换为标准JAR文件。各包文件在转换为JAR后将被删除。如果没有找到包文件，此方法不起任何作用。  
 	代码如下：
