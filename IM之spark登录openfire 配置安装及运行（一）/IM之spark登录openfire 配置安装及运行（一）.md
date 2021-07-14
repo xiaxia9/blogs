@@ -30,7 +30,7 @@ source /etc/profile
 8、确保安装成功：
 javac -version
 注：显示版本信息则安装成功。
-![](/media/xiaxia/Document/pictures_work/11.png) 
+![](11.png) 
 
 - 安装mysql
 1、分别执行下面三条命令：
@@ -90,21 +90,21 @@ flush privileges;
 1、在浏览器中输入http://localhost:9090/进入配置界面：
 前提：mysql、openfire均已打开
 2、选择语言：
-![](/media/xiaxia/Document/pictures_work/12.png) 
+![](12.png) 
 3、Server Settings：
 XMPP域名：建议申请域名，设置为申请的域名，或者使用127.0.0.1；
 Server Host Name（FQDN）：自己设置；
 Property Encryption via：选择AES，默认选择Blowfish在Profile Setting这步会出错；
 Property Encryption Key：自己设置。
-![](/media/xiaxia/Document/pictures_work/13.png) 
+![](/13.png) 
 4、Database Settings：
 默认选择标准数据库连接即可
-![](/media/xiaxia/Document/pictures_work/14.png) 
+![](14.png) 
 5、输入mysql的连接信息：
 JDBC Driver Class：com.mysql.jdbc.Driver
 Database URL：jdbc:mysql://localhost:3306/openfire?useSSL=true
 Username与Password是mysql数据库用户名和密码
-![](/media/xiaxia/Document/pictures_work/15.png) 
+![](15.png) 
 6、Profile Settings：
 默认设置
 7、Administrator Account：
@@ -113,7 +113,7 @@ Username与Password是mysql数据库用户名和密码
 9、进入登录界面：
 初始用户名密码均为admin
 10、登录成功界面：
-![](/media/xiaxia/Document/pictures_work/17.png) 
+![](17.png) 
 11、新建用户：
 Users/Groups->Create New User->设置用户名
 
@@ -133,5 +133,5 @@ ip地址即为192.168.1.109
 遇到的部分错误：
 1、Profile Settings:
 A failure occurred while fetching your session from the server.....如图：
-![](/media/xiaxia/Document/pictures_work/16.png) 
+![](16.png) 
 原因是Server Setting 把Property Encryption via设置成了Blowfish。

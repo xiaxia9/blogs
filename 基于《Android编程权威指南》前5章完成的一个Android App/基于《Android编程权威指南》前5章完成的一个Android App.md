@@ -18,7 +18,7 @@
 1、 介绍：
 在该界面输入用户名、密码，点击登录按钮可登录至游戏界面。
 2、运行界面截图：
-![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/AndroidApp/master/pictures/login.png)
+![](login.png)
 3、主要文件及解释：
 
 - Activity_login.xml：
@@ -32,10 +32,10 @@
 1、 介绍：
 该界面实现题目更新、答题按钮、作弊、查看下一题、查看上一题、答题正确与否提示、游戏得分统计、中英文切换功能。
 2、运行界面截图：
-![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/AndroidApp/master/pictures/run1.png)
+![](run1.png)
 
 中英文切换后：
-![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/AndroidApp/master/pictures/run3.png)
+![](run3.png)
 
 3、主要文件及解释：
 
@@ -56,18 +56,18 @@
 	该QuizActivity类继承View.OnClickListener，所以可以重写onClick()函数，由id值判断点击并切换语言。在此之前，需在values下面的string.xml文件中添加resources，zh-rCN下面的string.xml也需要添加。
 - 切换到游戏结束界面：
 	传递得分数据
-使用setEnabled()而使按钮失效。
-按钮点击实现响应事件：
-mTrueButton、mFalseButton点击调用checkAnswer()函数，核对答案；
-mNextButton点击调用updateQuestion()函数，当答题结束后调用changeActivity()函数，跳转到游戏结束界面；
-mCheatButton点击跳转到CheatActivity界面；
-mPreButton点击更新问题；
+	使用setEnabled()而使按钮失效。
+	按钮点击实现响应事件：
+	mTrueButton、mFalseButton点击调用checkAnswer()函数，核对答案；
+	mNextButton点击调用updateQuestion()函数，当答题结束后调用changeActivity()函数，跳转到游戏结束界面；
+	mCheatButton点击跳转到CheatActivity界面；
+	mPreButton点击更新问题；
 
 三、 作弊界面设计：
 1、 介绍
 该界面实现查看题目答案功能。
 2、 运行界面截图：
-![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/AndroidApp/master/pictures/cheat1.png)
+![](cheat1.png)
 
 3、 主要文件及解释：
 - activity_cheat.xml：
@@ -79,7 +79,7 @@ mPreButton点击更新问题；
 1、 介绍：
 接受QuizActivity的跳转，接受分数，将分数显示在此界面，提示游戏结束。
 2、 运行界面截图：
-![Aron Swartz](https://raw.githubusercontent.com/Xiawen9/AndroidApp/master/pictures/gameover.png)
+![](gameover.png)
 3、主要代码截图及解释：
 
 - activity_over.xml:
