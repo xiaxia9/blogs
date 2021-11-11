@@ -1,2 +1,4 @@
 ## 一些学习总结和问题解决
-- 博客地址： https://blog.csdn.net/qq_38172320
+- csdn： https://blog.csdn.net/qq_38172320
+- 知乎：https://www.zhihu.com/people/xia-xia-93-23-65
+
