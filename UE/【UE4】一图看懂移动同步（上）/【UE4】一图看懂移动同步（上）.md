@@ -77,11 +77,11 @@
 - 扩展移动快照（FSavedMove_Character）：重写PostUpdate()对变量进行赋值，有时候还需要重写Clear()清理变量。
 - 由于我们使用新的移动快照，所以需要重写FNetworkPredictionData_Client_Character::AllocateNewMove()来new我们自定义的移动快照。
 - 扩展网络上一次move的数据包FCharacterNetworkMoveData。重写ClientFillNetworkMoveData()，如果用到自定义的移动快照，可以转换传入的参数，然后取出数据。重写Serialize()进行序列化。
-- 扩展网络同步的数据包容器FCharacterNetworkMoveDataContainer。它包括NewMoveData、PendingMoveData、OldMoveData，这里简单的与FCharacterNetworkMoveData扩展包关联起来即可。还有，要在移动组件构造函数中调用SetNetworkMoveDataContainer()进行初始化。
+- 扩展网络同步的数据包容器FCharacterNetworkMoveDataContainer。它包括NewMoveData、PendingMoveData、OldMoveData，这里简单的与FCharacterNetworkMoveData扩展包关联起来即可。还有，要在移动组件构造函数中调用SetNetworkMoveDataContainer()进行设置。
 
 服务器数据扩展：
 
-- 扩展网络同步的数据包容器FCharacterMoveResponseDataContainer。这里更像是上面说的FCharacterNetworkMoveData扩展结构包，重写ServerFillResponseData()、Serialize()即可。还有，要在移动组件构造函数中调用SetMoveResponseDataContainer()进行初始化。
+- 扩展网络同步的数据包容器FCharacterMoveResponseDataContainer。这里更像是上面说的FCharacterNetworkMoveData扩展结构包，重写ServerFillResponseData()、Serialize()即可。还有，要在移动组件构造函数中调用SetMoveResponseDataContainer()进行设置。
 
 模拟端数据扩展：
 
