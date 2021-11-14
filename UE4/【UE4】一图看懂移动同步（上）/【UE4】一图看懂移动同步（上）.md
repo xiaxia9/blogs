@@ -4,9 +4,13 @@
 
 ![](【UE4】一图看懂移动同步（上）.png)
 
-也可以下载pdf、visio版本查看修改，链接在https://github.com/xiaxia9/blogs/tree/master/UE4/（如果有问题的话，我会在github上更新~）
+可以下载pdf、visio版本查看修改，链接在https://github.com/xiaxia9/blogs/tree/master/UE4/
 
-结合大佬们的文章（https://zhuanlan.zhihu.com/p/114341957、https://zhuanlan.zhihu.com/p/34257208）、官方文档（https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Networking/CharacterMovementComponent/）以及下面的补充食用更佳哦。
+可以结合大佬们的文章、官方文档以及下面的补充一起看~
+
+- https://zhuanlan.zhihu.com/p/114341957
+- https://zhuanlan.zhihu.com/p/34257208
+- https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Networking/CharacterMovementComponent/
 
 # 2 补充
 
