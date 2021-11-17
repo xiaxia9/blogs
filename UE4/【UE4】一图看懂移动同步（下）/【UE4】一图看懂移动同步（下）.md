@@ -13,7 +13,7 @@ Montage的同步主要由上层处理，比如UAbilitySystemComponent中就提�
 
 流程：客户端从动画中提取位移并转换成Velocity，之后调用StartNewPhysics()进行模拟。
 
-![](RootMotion.png)
+![](【UE4】一图看懂移动同步（下）.png)
 
 有些游戏使用MotionMatching技术时，在做网络同步时支持了Data Driven方案，所以了解该同步流程是有一定的帮助的。
 
